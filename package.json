@@ -1,0 +1,22 @@
+{
+  "name": "server-status",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dr4cun0/crossdomain.git"
+  },
+  "author": "@17haval",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dr4cun0/crossdomain/issues"
+  },
+  "homepage": "https://github.com/dr4cun0/crossdomain#readme",
+  "dependencies": {
+    "line-by-line": "^0.1.5"
+  }
+}

@@ -13,57 +13,57 @@ lr.on('line', function(line) {
 		//console.log("headers: ", res.headers);
 		if(res.statusCode == 200) {
 
-			  http.get('http://' + line + '/server-status/', function(response) {
+			  http.get('http://' + line + '/crossdomain.xml', function(response) {
 			  //console.log("statusCode: ", res.statusCode); // <======= Here's the status code
 			  //console.log("headers: ", res.headers);
 			  if(response.statusCode == 200) {
-					  console.log('http://' + line + "/server-status/\n");
+					  console.log('http://' + line + "/crossdomain.xml\n");
 			  }
 			  else if(response.statusCode == 403 || response.statusCode == 401) {
-					  console.log('Forbidden http://' + line + "/server-status/\n");
+					  //console.log('Forbidden http://' + line + "/crossdomain.xml\n");
 			  }
 
 			  }).on('error', function(e) {
 			  //console.error(e);
 			  });
 		}
-		else if(res.statusCode == 301 || res.statusCode == 302) {
+		else if((res.statusCode == 301 || res.statusCode == 302) && res.headers.location != "") {
 			//console.log(res.headers.location);
 			whatp = url.parse(res.headers.location).protocol;
 			//console.log(whatp);
 			if(whatp == "http:") {
 
-				  http.get(res.headers.location + 'server-status/', function(response) {
+				  http.get(res.headers.location + 'crossdomain.xml', function(response) {
 					  //console.log("statusCode: ", res.statusCode); // <======= Here's the status code
 					  //console.log("headers: ", res.headers);
 					  if(response.statusCode == 200) {
-						  console.log(res.headers.location + "server-status/\n");
+						  console.log(res.headers.location + "crossdomain.xml\n");
 					  }
 
 					  else if(response.statusCode == 403 || response.statusCode == 401) {
-						  console.log('Forbidden ' + res.headers.location + "server-status/\n");
+						  //console.log('Forbidden ' + res.headers.location + "crossdomain.xml\n");
 					  }
 
 				  }).on('error', function(e) {
-				    //console.error(e);
+				    console.error(e);
 				  });
 
 			}
-			else {
+			else if(whatp == "https:"){
 
-				  https.get(res.headers.location + 'server-status/', function(response) {
+				  https.get(res.headers.location + 'crossdomain.xml', function(response) {
 					  //console.log("statusCode: ", res.statusCode); // <======= Here's the status code
 					  //console.log("headers: ", res.headers);
 					  if(response.statusCode == 200) {
-						  console.log(res.headers.location + "server-status/\n");
+						  console.log(res.headers.location + "crossdomain.xml\n");
 					  }
 
 					  else if(response.statusCode == 403 || response.statusCode == 401) {
-						  console.log('Forbidden ' + res.headers.location + "server-status/\n");
+						  //console.log('Forbidden ' + res.headers.location + "crossdomain.xml\n");
 					  }
 
 				  }).on('error', function(e) {
-				    //console.error(e);
+				    console.error(e);
 				  });
 
 			}

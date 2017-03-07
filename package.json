@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/dr4cun0/crossdomain#readme",
   "dependencies": {
-    "line-by-line": "^0.1.5"
+    "concat-stream": "^1.6.0",
+    "line-by-line": "^0.1.5",
+    "xml2js": "^0.4.17"
   }
 }
